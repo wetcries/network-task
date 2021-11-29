@@ -1,0 +1,52 @@
+networks:
+    zone:
+      ipam:
+        driver: default
+        config:
+          - subnet: 192.160.0.0/16
+      
+
+services:
+  node-z1:
+    image: networks:latest
+    environment:
+      - ZONE=1
+      - LIMIT=40%
+    networks:
+      zone:
+        ipv4_address: 192.160.1.1    
+    cap_add:
+      - NET_ADMIN
+  
+  node-z2:
+    image: networks:latest
+    environment:
+      - ZONE=2
+      - LIMIT=20%
+    networks:
+      zone:
+        ipv4_address: 192.160.2.1
+    cap_add:
+      - NET_ADMIN
+  
+  node-z3:
+    image: networks:latest
+    environment:
+      - ZONE=3
+      - LIMIT=20%
+    networks:
+      zone:
+        ipv4_address: 192.160.3.1
+    cap_add:
+      - NET_ADMIN
+  
+  node-z4:
+    image: networks:latest
+    environment:
+      - ZONE=4
+      - LIMIT=20%
+    networks:
+      zone:
+        ipv4_address: 192.160.4.1
+    cap_add:
+      - NET_ADMIN
